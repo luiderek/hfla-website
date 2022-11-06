@@ -20,12 +20,12 @@
   box-shadow: 0px 8px 16px rgba(0,0,0,0.12);
 }
 
-// CSS Grid 
+// CSS Grid
 .page-content-container-grid {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
-  grid-template-areas: 
+  grid-template-areas:
     "content";
   align-items: start;
   margin-top: 20px;
@@ -39,14 +39,14 @@
   column-gap: 10px;
   row-gap: 26px;
   justify-items: stretch;
-  align-content: space-between; 
+  align-content: space-between;
 }
 
 // Makes the sticky navigation stick
 .stick-it {
   position: fixed;
   top:45px;
-  left: 1070px;
+  left: 1071px;
 }
 
 // Style the sticky nav links
@@ -110,7 +110,7 @@ a.anchor {
   display: grid;
   grid-template-columns: 15px auto;
   grid-template-rows: auto;
-  grid-template-areas: 
+  grid-template-areas:
     "content";
   align-items: start;
   margin-top: 20px;
@@ -133,7 +133,7 @@ a.anchor {
 
 // Make the Letter page card have square corners
 .page-card--ed {
-  box-shadow: 0 0 8px 0 rgba(51, 51, 51, 0.2); 
+  box-shadow: 0 0 8px 0 rgba(51, 51, 51, 0.2);
   border-radius: 0;
 }
 
@@ -276,7 +276,7 @@ a.anchor {
 .flex-container-row--partners {
   justify-content: space-between;
   margin-top: 25px;
-  
+
   & .partner-logo{
 		width: 100px;
 		margin: 12px 15px;
@@ -353,7 +353,7 @@ a.anchor {
 }
 
 .color-goldenrod-11 {
-  color: $color-lightorange; 
+  color: $color-lightorange;
   font-weight: 700;
   }
 
@@ -380,8 +380,8 @@ a.anchor {
 
 .sdg-images {
   display: flex;
-  flex-flow: row wrap; 
-  justify-content: space-around; 
+  flex-flow: row wrap;
+  justify-content: space-around;
   align-content: space-between;
 }
 
@@ -532,15 +532,15 @@ a.anchor {
   font-size: 2.2rem;
   text-decoration: none;
   font-weight: 900;
-  color: $color-black; 
+  color: $color-black;
   text-align: center;
   padding: 40px 0 36px 0;
 }
 
 .metrics-vrms-links {
   display: flex;
-  flex-flow: row nowrap; 
-  justify-content: space-evenly; 
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
   align-content: space-between;
 }
 
@@ -565,7 +565,7 @@ a.anchor {
   justify-content: center;
   align-items: center;
   width: 55.733vw;
-  padding-bottom: 45px; 
+  padding-bottom: 45px;
 }
 .image-news-container{
   height: 100px;
@@ -583,7 +583,7 @@ a.anchor {
 // Below tablet - 768px
 @media #{$bp-below-tablet} {
   .page-content-container-grid {
-    margin-top: 0; 
+    margin-top: 0;
   }
   .wins-card-mobile{
     margin-left: auto;
@@ -592,7 +592,7 @@ a.anchor {
 } // End below tablet
 
 // Bigger than mobile - 480px
-// @media #{$bp-mobile-up} {} 
+// @media #{$bp-mobile-up} {}
 // End mobile up
 
 // Bigger than tablet - 768px
@@ -605,7 +605,7 @@ a.anchor {
     grid-template-columns: 996px auto;
     grid-template-rows: auto;
     grid-gap: 75px;
-    grid-template-areas: 
+    grid-template-areas:
     "content nav";
     margin-top: 30px
   }
@@ -613,11 +613,6 @@ a.anchor {
   .sticky-nav {
     display: block;
     margin-right: 20px;
-  }
-
-  .sticky-nav-spacer-div {
-    grid-area: nav;
-    width: 250px;
   }
 
   .sticky-nav-content-container {
@@ -653,7 +648,7 @@ a.anchor {
     font-size: 1.5rem;
     margin: 0 0 40px;
     cursor: default;
-    justify-content: center; 
+    justify-content: center;
   }
 
   .about-us-section-header--ED {
@@ -692,7 +687,7 @@ a.anchor {
     display: grid;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto auto auto auto auto auto auto;
-    grid-template-areas: 
+    grid-template-areas:
     "top-left top-right"
     "top-left top-right"
     "top-left mid-right"
@@ -802,7 +797,7 @@ a.anchor {
   .wins-card-desktop {
     display: block;
   }
-  
+
   .wins-column-width-left {
     width: 30%;
     padding-left: 30px;
@@ -831,7 +826,7 @@ a.anchor {
   }
 
   .news-cells--govtech {
-    margin-bottom: 75px; 
+    margin-bottom: 75px;
   }
 
   .garcetti-mobile {
@@ -935,7 +930,7 @@ a.anchor {
 }
 @media only screen and (max-width: 960px) {
   .page-content-container-grid {
-    grid-template-columns: none; 
+    grid-template-columns: none;
   }
   .sticky-nav-content-container {
     margin-left: 0px;

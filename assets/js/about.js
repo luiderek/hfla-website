@@ -1,25 +1,26 @@
 // Constant setups for reuse throughout document
 const ANCHOR_LINKS_ID = [...document.querySelectorAll(".anchor")].map((anchor) => anchor.id);
 const NAVIGATION_LINK_ELEMENTS = document.querySelectorAll(".sticky-nav a");
-const VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight || 0,  window.innerHeight || 0);
-const STICKYNAVTOP = 343;
+const VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+const STICKY_NAV_TOP = 489;
 const BREAK_POINT = 960;
 const FLAGS = {
-    'displayChanged': true,
-    'listenerNotAttached': true
+  'displayChanged': true,
+  'listenerNotAttached': true
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  
   // UI components are updated on page load
   updateUI();
-  
+
   // UI components are updated on location change
   window.addEventListener("locationchange", updateUI);
 
   window.addEventListener("resize", resizeHandler);
 
-  document.addEventListener("wheel", scrollHandler);
+  document.addEventListener("scroll", scrollHandler);
+  // TODO: Put a limiter so that scrollHandler doesn't get called as much.
+  // It shouldn't be too computationally crazy, but this is still sloppy.
 
   document.querySelectorAll("#sticky-nav li a").forEach((navlink) => { navlink.addEventListener("click", toggleNavClass); });
 });
@@ -55,11 +56,11 @@ function updateUI() {
 
 function changeDisplayMode() {
   if (window.innerWidth < BREAK_POINT && FLAGS.displayChanged) {
-    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => {pageCard.lastElementChild.style.display = "none"; });
+    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => { pageCard.lastElementChild.style.display = "none"; });
     document.querySelector(`div[data-hash="${window.location.hash.split("#")[1]}"]`).parentElement.lastElementChild.style.display = "block";
     document.querySelector(`div[data-hash="${window.location.hash.split("#")[1]}"]`).parentElement.children[0].classList.toggle("au_active")
     FLAGS.displayChanged = false;
-  } 
+  }
   else if (window.innerWidth > BREAK_POINT && !FLAGS.displayChanged) {
     document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => { pageCard.lastElementChild.style.display = "block"; });
     document.querySelectorAll(".au_active").forEach((pageCard) => { pageCard.classList.remove("au_active"); });
@@ -81,11 +82,11 @@ function toggleNavClass(event) {
 
 function setupAccordionEventLitseners() {
   if (window.innerWidth < BREAK_POINT && FLAGS.listenerNotAttached) {
-    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => {pageCard.firstElementChild.addEventListener("click", accordionclicked);});
+    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => { pageCard.firstElementChild.addEventListener("click", accordionclicked); });
     FLAGS.listenerNotAttached = false;
-  } 
+  }
   else if (window.innerWidth > BREAK_POINT && !FLAGS.listenerNotAttached) {
-    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => { pageCard.firstElementChild.removeEventListener("click",accordionclicked); });
+    document.querySelectorAll(".page-card--about:nth-child(n+3)").forEach((pageCard) => { pageCard.firstElementChild.removeEventListener("click", accordionclicked); });
     FLAGS.listenerNotAttached = true;
   }
 }
@@ -97,27 +98,25 @@ function setupAccordionEventLitseners() {
 /* New code */
 
 function accordionclicked(event) {
-    console.log(event.target.dataset.hash);
+  // console.log(event.target.dataset.hash);
   if (
     window.getComputedStyle(this.parentElement.lastElementChild, null)
       .display == "block"
-    
   ) {
     event.target.classList.toggle("au_active");
     this.parentElement.lastElementChild.style.display = "none";
-    window.location.hash = event.target.dataset.hash;
+    // window.location.hash = event.target.dataset.hash;
   } else {
-        event.target.classList.toggle("au_active");
+    event.target.classList.toggle("au_active");
     this.parentElement.lastElementChild.style.display = "block";
-    window.location.hash = event.target.dataset.hash;
-
+    // window.location.hash = event.target.dataset.hash;
   }
 }
 
 //When the menu reaches the position we want it to stick at, this adds a class and some padding.
 function stickItHere() {
 
-  if (window.scrollY >= STICKYNAVTOP) {
+  if (window.scrollY >= STICKY_NAV_TOP) {
     //stickyNav.style.paddingTop = nav.offsetHeight + 'px';
     document.querySelector("#sticky-nav").classList.add("stick-it");
   } else {
@@ -153,35 +152,38 @@ function highlightNavOnScroll() {
   //window.location.hash = NAVIGATION_LINK_ELEMENTS[ANCHOR_LINKS_ID.length - 1].href.split('#')[1]
 }
 
+// From my perspective, hashchanges just from scrolling isn't desireable.
+// In the case you're trying to share links,
+//   having random anchors jammed into your URL is inconvinient.
 
-(() => {
-  var onScrollStop = (evt) => {
-    // you have scroll event as evt (for any additional info)
-    var scrollStopEvt = new CustomEvent('scrolling-stopped', {detail: 'foobar stopped :)'});
-    window.dispatchEvent(scrollStopEvt);
-  }
-  var scrollStopLag = 300 // the duration to wait before onScrollStop is triggerred.
-  var timerID = 0;
-  const handleScroll = (evt) => {
-    clearInterval(timerID);
-    timerID = setTimeout(
-      () => onScrollStop(evt),
-      scrollStopLag
-    )
-  }
-  window.addEventListener('wheel', handleScroll);
-})()
+// (() => {
+//   var onScrollStop = (evt) => {
+//     // you have scroll event as evt (for any additional info)
+//     var scrollStopEvt = new CustomEvent('scrolling-stopped', {detail: 'foobar stopped :)'});
+//     window.dispatchEvent(scrollStopEvt);
+//   }
+//   var scrollStopLag = 300 // the duration to wait before onScrollStop is triggerred.
+//   var timerID = 0;
+//   const handleScroll = (evt) => {
+//     clearInterval(timerID);
+//     timerID = setTimeout(
+//       () => onScrollStop(evt),
+//       scrollStopLag
+//     )
+//   }
+//   window.addEventListener('wheel', handleScroll);
+// })()
 
-window.addEventListener(
-  'scrolling-stopped', 
-  (evt) => {
+// window.addEventListener(
+//   'scrolling-stopped',
+//   (evt) => {
 
-    let navIsActive = document.querySelector('.is-active').href;
-    let hashInNavIsActive  = navIsActive.substring(navIsActive.lastIndexOf('/') + 1)
-    if(window.location.hash != hashInNavIsActive){
-      window.history.replaceState(null, '', hashInNavIsActive);
-    }
+//     let navIsActive = document.querySelector('.is-active').href;
+//     let hashInNavIsActive  = navIsActive.substring(navIsActive.lastIndexOf('/') + 1)
+//     if(window.location.hash != hashInNavIsActive){
+//       window.history.replaceState(null, '', hashInNavIsActive);
+//     }
 
-  
-  }
-)
+
+//   }
+// )
