@@ -1,8 +1,9 @@
 // Makes the sticky navigation stick
 .stick-it {
   position: fixed;
-  top:45px;
-  left: 1071px;
+  top: 45px;
+  // The guess and check method.
+  right: calc((100% - 1146px) * 4 / 7 - 100px);
 }
 
 // Style the sticky nav links
@@ -50,7 +51,7 @@ a.anchor {
 
 .sticky-nav {
   grid-area: nav;
-  display: none;
+  display: none; // Default value is overridden if width is large enough
   background: $color-white;
   border: 0px solid rgba(51, 51, 51, 0.06);
   border-radius: 16px;
