@@ -23,47 +23,18 @@ permalink: /about/
 </div>
 
 <div class="page-content-container-grid bg-color">
-
     <div class="grid-area-content">
-        <a class="anchor" id="letter" data-name="Letter from the ED"></a>
-        {% include about-page/about-card-executive-letter.html %}
-
-        <a class="anchor" id="platform" data-name="Hack for LA Platform"></a>
-        {% include about-page/about-card-platform.html %}
-
-        <a class="anchor" id="sustainability" data-name="Sustainability"></a>
-        {% include about-page/about-card-sustainability.html %}
-
-        <a class="anchor" id="accomplishments" data-name="Accomplishments"></a>
-        {% include about-page/about-card-accomplishments.html %}
-
-        <a class="anchor" id="metrics" data-name="Metrics"></a>
-        {% include about-page/about-card-metrics.html %}
-
-        <a class="anchor" id="partners" data-name="Partners"></a>
-        {% include about-page/about-card-partners.html %}
-
-        <a class="anchor" id="donations" data-name="Donations"></a>
-        {% include about-page/about-card-donations.html %}
-
-        <a class="anchor" id="sponsors" data-name="Sponsors"></a>
-        {% include about-page/about-card-sponsors.html %}
-
-        <a class="anchor" id="news" data-name="News"></a>
-        {% include about-page/about-card-news.html %}
+        {% for section in site.data.navigation.about-page %}
+        <a class="anchor" id="{{section.label}}" data-name="{{section.title}}"></a>
+        {% include {{section.link}} %}
+        {% endfor %}
     </div>
 
     <nav id="sticky-nav" class="sticky-nav">
         <ul>
-            <li><a class="is-active" href="#letter">Letter from the ED</a></li>
-            <li><a href="#platform">Hack for LA Platform</a></li>
-            <li><a href="#sustainability">Sustainability</a></li>
-            <li><a href="#accomplishments">Accomplishments</a></li>
-            <li><a href="#metrics">Metrics</a></li>
-            <li><a href="#partners">Partners</a></li>
-            <li><a href="#donations">Make a Donation</a></li>
-            <li><a href="#sponsors">Sponsors</a></li>
-            <li><a href="#news">News</a></li>
+            {% for section in site.data.navigation.about-page %}
+            <li><a href="#{{section.label}}">{{section.title}}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 </div>

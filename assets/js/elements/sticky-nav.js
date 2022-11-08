@@ -10,17 +10,19 @@ const FLAGS = {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+  // turn the first found sticky-nav anchor active
+  document.querySelector(".sticky-nav a").classList.toggle("is-active");
+
   // UI components are updated on page load
   updateUI();
 
-  // UI components are updated on location change
   window.addEventListener("locationchange", updateUI);
-
   window.addEventListener("resize", resizeHandler);
 
-  document.addEventListener("scroll", scrollHandler);
   // TODO: Put a limiter so that scrollHandler doesn't get called as much.
-  // It shouldn't be too computationally crazy, but this is still sloppy.
+  document.addEventListener("scroll", scrollHandler);
 
   document.querySelectorAll("#sticky-nav li a").forEach((navlink) => { navlink.addEventListener("click", toggleNavClass); });
 });
