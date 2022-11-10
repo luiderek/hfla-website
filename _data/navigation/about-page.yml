@@ -1,35 +1,35 @@
-- link: about-page/about-card-executive-letter.html
+- title: Letter from the ED
   label: letter
-  title: Letter from the ED
+  link: about-page/about-card-executive-letter.html
 
-- link: about-page/about-card-platform.html
+- title: Hack for LA Platform
   label: platform
-  title: Hack for LA Platform
+  link: about-page/about-card-platform.html
 
-- link: about-page/about-card-sustainability.html
+- title: Sustainability
   label: sustainability
-  title: Sustainability
+  link: about-page/about-card-sustainability.html
 
-- link: about-page/about-card-accomplishments.html
+- title: Accomplishments
   label: accomplishments
-  title: Accomplishments
+  link: about-page/about-card-accomplishments.html
 
-- link: about-page/about-card-metrics.html
+- title: Metrics
   label: metrics
-  title: Metrics
+  link: about-page/about-card-metrics.html
 
-- link: about-page/about-card-partners.html
+- title: Partners
   label: partners
-  title: Partners
+  link: about-page/about-card-partners.html
 
-- link: about-page/about-card-donations.html
+- title: Donations
   label: donations
-  title: Donations
+  link: about-page/about-card-donations.html
 
-- link: about-page/about-card-sponsors.html
+- title: Sponsors
   label: sponsors
-  title: Sponsors
+  link: about-page/about-card-sponsors.html
 
-- link: about-page/about-card-news.html
+- title: News
   label: news
-  title: News
+  link: about-page/about-card-news.html
